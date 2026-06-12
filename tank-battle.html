@@ -159,6 +159,10 @@
                         this.active = false;
                     } else if (tile === 2) {
                         this.active = false; // 铁墙打不掉
+                    } else if (tile === 3) {
+                        MAP[row][col] = 0; // 基地被摧毁
+                        this.active = false;
+                        game.baseAlive = false;
                     }
                 }
             }
@@ -303,7 +307,7 @@
                 this.gameOver = false;
                 this.baseAlive = true;
 
-                this.player = new Tank(TILE_SIZE * 1.5, TILE_SIZE * 13.5, true);
+                this.player = new Tank(TILE_SIZE * 0.5, TILE_SIZE * 13.5, true);
                 this.tanks.push(this.player);
 
                 this.bindEvents();
@@ -386,7 +390,7 @@
                                 setTimeout(() => {
                                     if (this.lives > 0 && !this.gameOver) {
                                         tank.alive = true;
-                                        tank.x = TILE_SIZE * 1.5;
+                                        tank.x = TILE_SIZE * 0.5;
                                         tank.y = TILE_SIZE * 13.5;
                                         tank.direction = DIR_UP;
                                     }
@@ -441,7 +445,7 @@
                 this.gameOver = false;
                 this.baseAlive = true;
 
-                this.player = new Tank(TILE_SIZE * 1.5, TILE_SIZE * 13.5, true);
+                this.player = new Tank(TILE_SIZE * 0.5, TILE_SIZE * 13.5, true);
                 this.tanks.push(this.player);
 
                 document.getElementById('gameOver').style.display = 'none';
